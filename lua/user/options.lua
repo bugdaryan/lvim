@@ -1,4 +1,4 @@
-lvim.colorscheme = "darkplus"
+lvim.colorscheme = "ayu-mirage"
 lvim.log.level = "warn"
 lvim.builtin.alpha.active = true
 lvim.lsp.diagnostics.float.focusable = true
@@ -37,9 +37,6 @@ lvim.builtin.cmp.formatting.source_names = {
   copilot = "",
   treesitter = "",
 }
-lvim.builtin.cmp.formatting = {
-    format = require("tailwindcss-colorizer-cmp").formatter
-}
 -- lvim.builtin.autopairs.active = false
 -- vim.g.netrw_browse_split = 0
 -- vim.g.netrw_banner = 0
@@ -77,7 +74,7 @@ local options = {
   laststatus = 3,
   showcmd = false,
   ruler = false,
-  relativenumber = true, -- set relative numbered lines
+  relativenumber = false, -- set relative numbered lines
   numberwidth = 4, -- set number column width to 2 {default 4}
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
   wrap = false, -- display lines as one long line

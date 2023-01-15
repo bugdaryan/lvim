@@ -22,3 +22,30 @@ local mappings = {
 }
 
 which_key.register(mappings, opts)
+
+require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
+
+-- require'sniprun'.setup({
+--     display = { "Terminal" },
+--     display_options = {
+--         terminal_width = 45,
+--     },
+--     selected_interpreters={'Python3_jupyter'}
+-- })
+require "iron.core".setup({
+  config = {
+    should_map_plug = false,
+    scratch_repl = true,
+    repl_definition = {
+      python = {
+        command = { "ipython" },
+        format = require("iron.fts.common").bracketed_paste,
+      },
+    },
+  },
+  keymaps = {
+    send_motion = "ctr",
+    visual_send = "ctr",
+  },
+})
+

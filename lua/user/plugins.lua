@@ -1,8 +1,6 @@
 -- Additional Plugins
 lvim.plugins = {
   "ellisonleao/gruvbox.nvim",
-  "LunarVim/synthwave84.nvim",
-  "roobert/tailwindcss-colorizer-cmp.nvim",
   "lunarvim/github.nvim",
   "nvim-treesitter/playground",
   "nvim-treesitter/nvim-treesitter-textobjects",
@@ -43,11 +41,23 @@ lvim.plugins = {
   "mxsdev/nvim-dap-vscode-js",
   "petertriho/nvim-scrollbar",
   "renerocksai/telekasten.nvim",
-  -- "renerocksai/calendar-vim",
+  "renerocksai/calendar-vim",
+  "kdheepak/lazygit.nvim",
+  {
+    "nvim-telescope/telescope.nvim",
+    requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+    config = function()
+        require("telescope").load_extension("lazygit")
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
   {
     "saecki/crates.nvim",
-    version = "v0.3.0",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    tag = "v0.3.0",
+    requires = { "nvim-lua/plenary.nvim" },
     config = function()
       require("crates").setup {
         null_ls = {
@@ -58,7 +68,7 @@ lvim.plugins = {
     end,
   },
   "MunifTanjim/nui.nvim",
-  "jackMort/ChatGPT.nvim",
+  "hkupty/iron.nvim",
   {
     "jinh0/eyeliner.nvim",
     config = function()
@@ -71,9 +81,9 @@ lvim.plugins = {
   "monaqa/dial.nvim",
   {
     "0x100101/lab.nvim",
-    build = "cd js && npm ci",
+    run = "cd js && npm ci",
   },
-  { "tzachar/cmp-tabnine", build = "./install.sh" },
+  { "tzachar/cmp-tabnine", run = "./install.sh" },
   {
     "zbirenbaum/copilot.lua",
     -- event = { "VimEnter" },
@@ -96,6 +106,15 @@ lvim.plugins = {
       }
     end,
   },
+  { "Shatur/neovim-ayu" }
+  -- { 'michaelb/sniprun', run = 'bash ./install.sh'},
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+  --   config = function()
+  --       require("telescope").load_extension("lazygit")
+  --   end,
+  -- }
   -- "MunifTanjim/nui.nvim",
   -- {
   --   "folke/noice.nvim",

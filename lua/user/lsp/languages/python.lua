@@ -5,10 +5,10 @@ formatters.setup {
 }
 
 -- Set a linter.
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  { command = "flake8", filetypes = { "python" } },
-}
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup {
+--   { command = "flake8", filetypes = { "python" }, ignore={'E501', 'E231'}},
+-- }
 
 -- Setup dap for python
 local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")

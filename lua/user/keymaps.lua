@@ -6,6 +6,10 @@ local opts = { noremap = true, silent = true }
 
 local keymap = vim.keymap.set
 
+keymap("i", "jk", "<Esc>", opts)
+
+keymap("n", "<C-s>", "<cmd>SnipRun<cr>", opts)
+
 keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
 keymap("n", "<C-i>", "<C-i>", opts)
 
@@ -54,8 +58,8 @@ keymap("n", "g#", "g#zz", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
-keymap("v", "p", '"_dp', opts)
-keymap("v", "P", '"_dP', opts)
+keymap("v", "p", '"_dP', opts)
+-- keymap("v", "P", '"_dP', opts)
 
 keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
 

@@ -1,22 +1,23 @@
+lvim.builtin.which_key.mappings["n"] = { "<cmd>lua require'sniprun'.run('v')<CR>", "REPL" }
+-- lvim.builtin.which_key.mappings["n"] = {
+--   name = "Sniprun",
+--   s = { "<expr>", function() if vim.fn.visualmode() == "V" or vim.fn.visualmode() == "#" then return vim.cmd("lua require'sniprun'.run('v')") else return "n" end end, "REPL" },
+-- }
+
+lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "Dashboard" }
 lvim.builtin.which_key.mappings["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" }
 lvim.builtin.which_key.mappings["v"] = { "<cmd>vsplit<cr>", "vsplit" }
-lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<cr>", "nohl" }
+-- lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<cr>", "nohl" }
 lvim.builtin.which_key.mappings["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" }
+lvim.builtin.which_key.mappings["a"] = { "<cmd>ene!<cr>", "New file" }
 lvim.builtin.which_key.mappings["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" }
--- lvim.builtin.which_key.mappings["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
+lvim.builtin.which_key.mappings["h"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
 lvim.builtin.which_key.mappings["gy"] = "Link"
 lvim.builtin.which_key.mappings["r"] = {
   name = "Replace",
   r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
   w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
   f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
-}
-lvim.builtin.which_key.mappings["c"] = {
-  name = "ChatGPT",
-  c = { "<cmd>ChatGPT<cr>", "Chat" },
-  a = { "<cmd>ChatGPTActAs<cr>", "Act As" },
-  e = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit" },
-  r = { "<cmd>ChatRunCustomCodeAction<cr>", "Code Action" },
 }
 lvim.builtin.which_key.mappings["d"] = {
   name = "Debug",
@@ -49,8 +50,10 @@ lvim.builtin.which_key.mappings["f"] = {
 }
 lvim.builtin.which_key.mappings["g"] = {
   name = "Git",
+  g = { "<cmd>LazyGit<cr>", "Lazygit" },
+  -- g = { "<cmd>lua require('lazygit.utils').project_root_dir()<cr>", "Lazygit" },
   -- g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle(12000)<cr>", "Lazygit" },
-  g = { "<cmd>Neogit<cr>", "Neogit" },
+  m = { "<cmd>Neogit<cr>", "Neogit" },
   j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
   k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
   l = { "<cmd>GitBlameToggle<cr>", "Blame" },
@@ -109,6 +112,7 @@ lvim.builtin.which_key.mappings["l"] = {
   l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
   o = { "<cmd>SymbolsOutline<cr>", "Outline" },
   q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+  -- q = { "vim.diagnostic.setloclist", "Quickfix" },
   r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
   R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
   s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
@@ -140,22 +144,96 @@ lvim.builtin.which_key.mappings["o"] = {
   -- s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
   -- t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
 }
-
-lvim.builtin.which_key.mappings["n"] = {
-  name = "Notes",
-  c = { "<cmd>Telekasten show_calendar<cr>", "Calendar" },
-  n = { "<cmd>Telekasten new_note<cr>", "Note" },
-  f = { "<cmd>Telekasten find_notes<cr>", "Find" },
-  F = { "<cmd>Telekasten find_daily_notes<cr>", "Find Journal" },
-  j = { "<cmd>Telekasten goto_today<cr>", "Journal" },
-  p = { "<cmd>Telekasten panel<cr>", "Panel" },
-  t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
+lvim.builtin.which_key.mappings["L"] = {
+      name = "+LunarVim",
+      c = {
+        "<cmd>edit " .. get_config_dir() .. "/config.lua<cr>",
+        "Edit config.lua",
+      },
+      f = {
+        "<cmd>lua require('lvim.core.telescope.custom-finders').find_lunarvim_files()<cr>",
+        "Find LunarVim files",
+      },
+      g = {
+        "<cmd>lua require('lvim.core.telescope.custom-finders').grep_lunarvim_files()<cr>",
+        "Grep LunarVim files",
+      },
+      k = { "<cmd>Telescope keymaps<cr>", "View LunarVim's keymappings" },
+      i = {
+        "<cmd>lua require('lvim.core.info').toggle_popup(vim.bo.filetype)<cr>",
+        "Toggle LunarVim Info",
+      },
+      I = {
+        "<cmd>lua require('lvim.core.telescope.custom-finders').view_lunarvim_changelog()<cr>",
+        "View LunarVim's changelog",
+      },
+      l = {
+        name = "+logs",
+        d = {
+          "<cmd>lua require('lvim.core.terminal').toggle_log_view(require('lvim.core.log').get_path())<cr>",
+          "view default log",
+        },
+        D = {
+          "<cmd>lua vim.fn.execute('edit ' .. require('lvim.core.log').get_path())<cr>",
+          "Open the default logfile",
+        },
+        l = {
+          "<cmd>lua require('lvim.core.terminal').toggle_log_view(vim.lsp.get_log_path())<cr>",
+          "view lsp log",
+        },
+        L = { "<cmd>lua vim.fn.execute('edit ' .. vim.lsp.get_log_path())<cr>", "Open the LSP logfile" },
+        n = {
+          "<cmd>lua require('lvim.core.terminal').toggle_log_view(os.getenv('NVIM_LOG_FILE'))<cr>",
+          "view neovim log",
+        },
+        N = { "<cmd>edit $NVIM_LOG_FILE<cr>", "Open the Neovim logfile" },
+        p = {
+          "<cmd>lua require('lvim.core.terminal').toggle_log_view(get_cache_dir() .. '/packer.nvim.log')<cr>",
+          "view packer log",
+        },
+        P = { "<cmd>edit $LUNARVIM_CACHE_DIR/packer.nvim.log<cr>", "Open the Packer logfile" },
+      },
+      r = { "<cmd>LvimReload<cr>", "Reload LunarVim's configuration" },
+      u = { "<cmd>LvimUpdate<cr>", "Update LunarVim" },
 }
+lvim.builtin.which_key.mappings["s"] = {
+  name = "Search",
+  b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+  c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+  f = { "<cmd>Telescope find_files<cr>", "Find File" },
+  h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+  H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
+  M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+  r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+  R = { "<cmd>Telescope registers<cr>", "Registers" },
+  t = { "<cmd>Telescope live_grep<cr>", "Text" },
+  k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+  C = { "<cmd>Telescope commands<cr>", "Commands" },
+  p = {
+    "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
+    "Colorscheme with Preview",
+  },
+}
+-- lvim.builtin.which_key.mappings["s"] = {
+--   name = "Sniprun",
+--   p = {"<cmd>lua require'sniprun'.run('v')<cr>", "REPL"}
+-- }
 
-lvim.builtin.which_key.mappings[";"] = nil
--- lvim.builtin.which_key.mappings["c"] = nil
-lvim.builtin.which_key.mappings["L"] = nil
-lvim.builtin.which_key.mappings["s"] = nil
+-- lvim.builtin.which_key.mappings["n"] = {
+--   name = "Notes",
+--   c = { "<cmd>Telekasten show_calendar<cr>", "Calendar" },
+--   n = { "<cmd>Telekasten new_note<cr>", "Note" },
+--   f = { "<cmd>Telekasten find_notes<cr>", "Find" },
+--   F = { "<cmd>Telekasten find_daily_notes<cr>", "Find Journal" },
+--   j = { "<cmd>Telekasten goto_today<cr>", "Journal" },
+--   p = { "<cmd>Telekasten panel<cr>", "Panel" },
+--   t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
+-- }
+
+-- lvim.builtin.which_key.mappings[";"] = nil
+lvim.builtin.which_key.mappings["c"] = nil
+-- lvim.builtin.which_key.mappings["L"] = nil
+-- lvim.builtin.which_key.mappings["s"] = nil
 lvim.builtin.which_key.mappings["w"] = nil
 
 local m_opts = {
@@ -189,7 +267,7 @@ local m_mappings = {
   --   "Show",
   -- },
   x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
-  [";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
+  -- [";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
 }
 
 which_key.register(m_mappings, m_opts)
