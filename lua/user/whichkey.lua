@@ -7,11 +7,12 @@ lvim.builtin.which_key.mappings["n"] = { "<cmd>lua require'sniprun'.run('v')<CR>
 lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "Dashboard" }
 lvim.builtin.which_key.mappings["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" }
 lvim.builtin.which_key.mappings["v"] = { "<cmd>vsplit<cr>", "vsplit" }
+lvim.builtin.which_key.mappings["h"] = { "<cmd>split<cr>", "hsplit" }
 -- lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<cr>", "nohl" }
 lvim.builtin.which_key.mappings["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" }
 lvim.builtin.which_key.mappings["a"] = { "<cmd>ene!<cr>", "New file" }
 lvim.builtin.which_key.mappings["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" }
-lvim.builtin.which_key.mappings["h"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
+lvim.builtin.which_key.mappings["d"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
 lvim.builtin.which_key.mappings["gy"] = "Link"
 lvim.builtin.which_key.mappings["r"] = {
   name = "Replace",
@@ -19,18 +20,18 @@ lvim.builtin.which_key.mappings["r"] = {
   w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
   f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
 }
-lvim.builtin.which_key.mappings["d"] = {
-  name = "Debug",
-  b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
-  c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-  i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
-  o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
-  O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
-  r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
-  l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
-  u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
-  x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
-}
+-- lvim.builtin.which_key.mappings["d"] = {
+--   name = "Debug",
+--   b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+--   c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+--   i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
+--   o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
+--   O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
+--   r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
+--   l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
+--   u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
+--   x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+-- }
 lvim.builtin.which_key.mappings["f"] = {
   name = "Find",
   b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -196,28 +197,28 @@ lvim.builtin.which_key.mappings["L"] = {
       r = { "<cmd>LvimReload<cr>", "Reload LunarVim's configuration" },
       u = { "<cmd>LvimUpdate<cr>", "Update LunarVim" },
 }
-lvim.builtin.which_key.mappings["s"] = {
-  name = "Search",
-  b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-  c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-  f = { "<cmd>Telescope find_files<cr>", "Find File" },
-  h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-  H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
-  M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-  r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-  R = { "<cmd>Telescope registers<cr>", "Registers" },
-  t = { "<cmd>Telescope live_grep<cr>", "Text" },
-  k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-  C = { "<cmd>Telescope commands<cr>", "Commands" },
-  p = {
-    "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
-    "Colorscheme with Preview",
-  },
-}
 -- lvim.builtin.which_key.mappings["s"] = {
---   name = "Sniprun",
---   p = {"<cmd>lua require'sniprun'.run('v')<cr>", "REPL"}
+--   name = "Search",
+--   b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+--   c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+--   f = { "<cmd>Telescope find_files<cr>", "Find File" },
+--   h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+--   H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
+--   M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+--   r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+--   R = { "<cmd>Telescope registers<cr>", "Registers" },
+--   t = { "<cmd>Telescope live_grep<cr>", "Text" },
+--   k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+--   C = { "<cmd>Telescope commands<cr>", "Commands" },
+--   p = {
+--     "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
+--     "Colorscheme with Preview",
+--   },
 -- }
+lvim.builtin.which_key.mappings["m"] = {
+  name = "Sniprun",
+  l = {"<cmd>lua require'sniprun'.run('v')<cr>", "REPL"}
+}
 
 -- lvim.builtin.which_key.mappings["n"] = {
 --   name = "Notes",
@@ -233,7 +234,7 @@ lvim.builtin.which_key.mappings["s"] = {
 -- lvim.builtin.which_key.mappings[";"] = nil
 lvim.builtin.which_key.mappings["c"] = nil
 -- lvim.builtin.which_key.mappings["L"] = nil
--- lvim.builtin.which_key.mappings["s"] = nil
+lvim.builtin.which_key.mappings["s"] = nil
 lvim.builtin.which_key.mappings["w"] = nil
 
 local m_opts = {
