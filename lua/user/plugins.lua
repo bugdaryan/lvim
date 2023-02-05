@@ -108,6 +108,7 @@ lvim.plugins = {
   },
   { "Shatur/neovim-ayu" },
   { 'michaelb/sniprun', run = 'bash ./install.sh'},
+  "geg2102/nvim-python-repl",
   -- {
   --   "nvim-telescope/telescope.nvim",
   --   requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
